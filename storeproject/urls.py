@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from shop.views import ProductViewSet, product_page
+from shop.views import ProductViewSet, product_page, register_page
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
@@ -27,4 +27,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register/', register_page),
 ]
