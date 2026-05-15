@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    container_name: storeproject_web
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+  nginx:
+    image: nginx:latest
+    container_name: storeproject_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
